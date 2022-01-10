@@ -7,13 +7,15 @@ const Nav = () => {
         <Link to="/">
           <li>Home</li>
         </Link>
-
-        <li>Topics</li>
+        <Link to="/topics">
+          <li>Topics</li>
+        </Link>
         <Link to="/articles">
           <li>Articles</li>
         </Link>
-
-        <li>Users</li>
+        <Link to="/users">
+          <li>Users</li>
+        </Link>
       </ul>
     </div>
   );

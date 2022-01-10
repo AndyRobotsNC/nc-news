@@ -9,3 +9,8 @@ export const allArticles = () => {
     return data;
   });
 };
+export const allTopics = () => {
+  return apiRequest.get("/topics").then((data) => {
+    return data;
+  });
+};

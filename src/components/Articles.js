@@ -8,7 +8,6 @@ const Articles = () => {
   useEffect(() => {
     allArticles().then((allData) => {
       setArticles(allData.data.articles);
-      console.log(allData.data.articles);
     });
   }, []);
 
