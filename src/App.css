@@ -42,11 +42,19 @@ body {
   width: 60%;
   box-shadow: 4px 5px 10px 5px rgba(0, 0, 0, 0.45);
   margin: 10px;
-  justify-content: space-around;
   text-align: left;
   padding: 10px;
 }
 .articleCard:hover {
   background-color: rgb(148, 148, 148);
   color: black;
+}
+.article {
+  position: absolute;
+  width: 60%;
+  box-shadow: 4px 5px 10px 5px rgba(0, 0, 0, 0.45);
+  margin: 10px;
+  justify-content: center;
+  text-align: left;
+  padding: 10px;
 }

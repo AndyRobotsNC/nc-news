@@ -7,7 +7,7 @@ const ArticleCard = ({ article }) => {
         <h3>{article.title}</h3>
       </Link>
       <p>{`${article.body.slice(0, 70)}...`}</p>
-      <h4>Author: {article.author}</h4>
+      <h4>By {article.author}</h4>
     </div>
   );
 };

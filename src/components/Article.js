@@ -9,12 +9,17 @@ const Article = () => {
   useEffect(() => {
     singleArticle(params.article_id).then((singleItemData) => {
       setArticleItem(singleItemData);
+      console.log(singleItemData);
     });
   }, [params]);
 
   return (
-    <div className="articleCard">
-      <h2>{articleItem.article_id}</h2>
+    <div className="article">
+      <h1>{articleItem.title}</h1>
+      <h3>By {articleItem.author}</h3>
+      <p>{articleItem.body}</p>
+      <p>{articleItem.created_at}</p>
+      <p>View comments ({articleItem.comment_count})</p>
     </div>
   );
 };
