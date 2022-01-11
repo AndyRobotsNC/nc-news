@@ -14,3 +14,8 @@ export const allTopics = () => {
     return data;
   });
 };
+export const singleArticle = (article_id) => {
+  return apiRequest.get(`/articles/${article_id}`).then((data) => {
+    return data.data.article;
+  });
+};
