@@ -24,7 +24,7 @@ const Article = () => {
         });
       }
     });
-  }, [params, showComments, articleItem.comment_count]);
+  }, [params, showComments]);
 
   const toggleComments = () => {
     setShowComments((curr) => !curr);

@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { allArticles, allItemsByCategory } from "../utils/api";
 import ArticleCard from "./ArticleCard";
 import { useSearchParams } from "react-router-dom";
+import SortBy from "./SortBy";
 
 const Articles = () => {
   const [articles, setArticles] = useState([]);
@@ -22,11 +23,14 @@ const Articles = () => {
   }, [category_name]);
 
   return (
-    <div className="container">
-      {articles.map((article) => {
-        return <ArticleCard article={article} />;
-      })}
-    </div>
+    <>
+      <SortBy />
+      <div className="container">
+        {articles.map((article) => {
+          return <ArticleCard article={article} />;
+        })}
+      </div>
+    </>
   );
 };
 
