@@ -21,7 +21,11 @@ export const singleArticle = (article_id) => {
 };
 export const singleArticleComments = (article_id) => {
   return apiRequest.get(`/articles/${article_id}/comments`).then((data) => {
-    console.log(data.data.comments);
     return data.data.comments;
   });
+};
+export const patchUpvotes = (article_id, inc_votes) => {
+  return apiRequest
+    .patch(`/articles/${article_id}`, { inc_votes })
+    .then((data) => {});
 };

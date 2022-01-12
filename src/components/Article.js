@@ -1,13 +1,18 @@
 import { useEffect, useState } from "react";
+import Upvote from "./Upvote";
 import { Link, useParams } from "react-router-dom";
-import { singleArticle, singleArticleComments } from "../utils/api";
+import {
+  singleArticle,
+  singleArticleComments,
+  patchUpvotes,
+} from "../utils/api";
 
 const Article = () => {
   const [articleItem, setArticleItem] = useState({});
   const [articleComments, setArticleComments] = useState([]);
   const [showComments, setShowComments] = useState(false);
-  const params = useParams();
 
+  const params = useParams();
   useEffect(() => {
     singleArticle(params.article_id).then((singleItemData) => {
       setArticleItem(singleItemData);
@@ -15,7 +20,6 @@ const Article = () => {
       if (showComments) {
         singleArticleComments(params.article_id).then((commentsData) => {
           setArticleComments(commentsData);
-          console.log(commentsData);
         });
       }
     });
@@ -24,7 +28,7 @@ const Article = () => {
   const toggleComments = () => {
     setShowComments((curr) => !curr);
   };
-
+  console.log(articleItem.votes);
   return (
     <>
       <div className="container">
@@ -32,7 +36,10 @@ const Article = () => {
           <h1>{articleItem.title}</h1>
           <h3>By {articleItem.author}</h3>
           <p>{articleItem.body}</p>
-          <button>Upvotes: {articleItem.votes}</button>
+          {articleItem.article_id && (
+            <Upvote article_id={params.article_id} votes={articleItem.votes} />
+          )}
+
           <p>{articleItem.created_at}</p>
           {
             <button onClick={toggleComments}>
