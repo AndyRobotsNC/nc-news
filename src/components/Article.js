@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import AddComment from "./AddComment";
 import Upvote from "./Upvote";
 import { Link, useParams } from "react-router-dom";
 import {
@@ -23,12 +24,12 @@ const Article = () => {
         });
       }
     });
-  }, [params, showComments]);
+  }, [params, showComments, articleItem.comment_count]);
 
   const toggleComments = () => {
     setShowComments((curr) => !curr);
   };
-  console.log(articleItem.votes);
+
   return (
     <>
       <div className="container">
@@ -48,6 +49,9 @@ const Article = () => {
           }
         </div>
       </div>
+
+      <AddComment article_id={articleItem.article_id} />
+
       <div className="article-comments">
         {showComments &&
           articleComments.map((comment) => {
