@@ -19,3 +19,9 @@ export const singleArticle = (article_id) => {
     return data.data.article;
   });
 };
+export const singleArticleComments = (article_id) => {
+  return apiRequest.get(`/articles/${article_id}/comments`).then((data) => {
+    console.log(data.data.comments);
+    return data.data.comments;
+  });
+};

@@ -58,3 +58,15 @@ body {
   text-align: left;
   padding: 10px;
 }
+.article-comments {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.single-comment {
+  width: 40%;
+  box-shadow: 4px 5px 10px 5px rgba(0, 0, 0, 0.45);
+  margin: 10px;
+  text-align: left;
+  padding: 10px;
+}
