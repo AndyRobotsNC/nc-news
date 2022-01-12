@@ -7,7 +7,6 @@ const Topics = () => {
 
   useEffect(() => {
     allTopics().then((allData) => {
-      console.log(allData);
       setTopics(allData.data.topics);
     });
   }, []);

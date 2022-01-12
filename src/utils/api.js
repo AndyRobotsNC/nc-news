@@ -9,6 +9,12 @@ export const allArticles = () => {
     return data;
   });
 };
+export const allItemsByCategory = (category_name) => {
+  return apiRequest.get(`/articles?topic=${category_name}`).then((data) => {
+    return data;
+  });
+};
+
 export const allTopics = () => {
   return apiRequest.get("/topics").then((data) => {
     return data;
