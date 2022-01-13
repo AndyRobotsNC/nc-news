@@ -14,6 +14,18 @@ export const allItemsByCategory = (category_name) => {
     return data;
   });
 };
+export const allItemsBySort = (sort_by) => {
+  return apiRequest.get(`/articles?sort_by=${sort_by}`).then((data) => {
+    return data;
+  });
+};
+export const allItemsByCategoryAndSort = (category_name, sort_by) => {
+  return apiRequest
+    .get(`articles?topic=${category_name}&sort_by=${sort_by}`)
+    .then((data) => {
+      return data;
+    });
+};
 
 export const allTopics = () => {
   return apiRequest.get("/topics").then((data) => {
