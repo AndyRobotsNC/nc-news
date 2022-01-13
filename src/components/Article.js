@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import AddComment from "./AddComment";
+import SingleComment from "./SingleComment";
 import Upvote from "./Upvote";
 import { Link, useParams } from "react-router-dom";
 import {
@@ -12,6 +13,8 @@ const Article = () => {
   const [articleItem, setArticleItem] = useState({});
   const [articleComments, setArticleComments] = useState([]);
   const [showComments, setShowComments] = useState(false);
+
+  const [commentText, setCommentTex] = useState("View comments");
 
   const params = useParams();
   useEffect(() => {
@@ -55,12 +58,7 @@ const Article = () => {
       <div className="article-comments">
         {showComments &&
           articleComments.map((comment) => {
-            return (
-              <div className="single-comment">
-                <h3>{comment.author}</h3>
-                <p>{comment.body}</p>
-              </div>
-            );
+            return <SingleComment comment={comment} />;
           })}
       </div>
     </>
