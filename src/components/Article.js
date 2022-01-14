@@ -2,7 +2,7 @@ import { useEffect, useState, useContext } from "react";
 import AddComment from "./AddComment";
 import SingleComment from "./SingleComment";
 import Upvote from "./Upvote";
-import { loginContext } from "../utils/checkLogin";
+import { loginContext } from "../utils/Context";
 import { Link, useParams } from "react-router-dom";
 import {
   singleArticle,
@@ -46,11 +46,9 @@ const Article = () => {
 
           <p>{articleItem.created_at}</p>
           <div>
-            {isLoggedIn && (
-              <button onClick={toggleComments}>
-                View comments ({articleItem.comment_count})
-              </button>
-            )}
+            <button onClick={toggleComments}>
+              View comments ({articleItem.comment_count})
+            </button>
           </div>
         </div>
       </div>

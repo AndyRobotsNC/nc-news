@@ -7,30 +7,33 @@ import Article from "./components/Article";
 import Topics from "./components/Topics";
 import LoginPage from "./components/LoginPage";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { loginContext } from "./utils/checkLogin";
+import { loginContext, usernameContext } from "./utils/Context";
 import { useState } from "react";
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [username, setUsername] = useState("");
 
   return (
     <loginContext.Provider value={{ isLoggedIn, setIsLoggedIn }}>
-      <BrowserRouter>
-        <div className="App">
-          <Header className="header" />
-          <Nav />
-          <div>
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/articles" element={<Articles />} />
-              <Route path="/articles/:article_id" element={<Article />} />
-              <Route path="/topics" element={<Topics />} />
+      <usernameContext.Provider value={{ username, setUsername }}>
+        <BrowserRouter>
+          <div className="App">
+            <Header className="header" />
+            <Nav />
+            <div>
+              <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/articles" element={<Articles />} />
+                <Route path="/articles/:article_id" element={<Article />} />
+                <Route path="/topics" element={<Topics />} />
 
-              <Route path="/login" element={<LoginPage />} />
-            </Routes>
+                <Route path="/login" element={<LoginPage />} />
+              </Routes>
+            </div>
           </div>
-        </div>
-      </BrowserRouter>
+        </BrowserRouter>
+      </usernameContext.Provider>
     </loginContext.Provider>
   );
 }

@@ -9,6 +9,6 @@ const Upvote = ({ article_id, votes }) => {
     patchUpvotes(article_id, 1);
   };
 
-  return <button onClick={handleUpvotes}>{upvotes}</button>;
+  return <button onClick={handleUpvotes}>Upvotes:{upvotes}</button>;
 };
 export default Upvote;

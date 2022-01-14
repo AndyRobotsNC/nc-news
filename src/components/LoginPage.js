@@ -1,16 +1,17 @@
 import { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
-import { loginContext } from "../utils/checkLogin";
+import { loginContext, usernameContext } from "../utils/Context";
 
 const LoginPage = () => {
   const { isLoggedIn, setIsLoggedIn } = useContext(loginContext);
-
+  const { username, setUsername } = useContext(usernameContext);
   let navigate = useNavigate();
   const [loginBox, setLoginBox] = useState("");
 
   const handleSubmit = (event) => {
     if (loginBox === "jessjelly") {
       navigate("/");
+      setUsername("jessjelly");
       setIsLoggedIn((currState) => !currState);
     }
     event.preventDefault();

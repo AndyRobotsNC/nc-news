@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { useContext } from "react";
-import { loginContext } from "../utils/checkLogin";
+import { loginContext } from "../utils/Context";
 
 const Header = () => {
   const { isLoggedIn, setIsLoggedIn } = useContext(loginContext);
