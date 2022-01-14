@@ -1,21 +1,18 @@
-import { useEffect, useState, useContext } from "react";
+import { useEffect, useState } from "react";
 import AddComment from "./AddComment";
 import SingleComment from "./SingleComment";
 import Upvote from "./Upvote";
-import { loginContext } from "../utils/Context";
-import { Link, useParams } from "react-router-dom";
-import {
-  singleArticle,
-  singleArticleComments,
-  patchUpvotes,
-} from "../utils/api";
+import { useParams } from "react-router-dom";
+import { singleArticle, singleArticleComments } from "../utils/api";
 
 const Article = () => {
   const [articleItem, setArticleItem] = useState({});
   const [articleComments, setArticleComments] = useState([]);
   const [showComments, setShowComments] = useState(false);
+  const [error, setError] = useState(null);
 
   const params = useParams();
+
   useEffect(() => {
     singleArticle(params.article_id)
       .then((singleItemData) => {
@@ -28,7 +25,7 @@ const Article = () => {
         }
       })
       .catch((err) => {
-        console.log(err);
+        setError({ err });
       });
   }, [params, showComments]);
 
@@ -38,32 +35,41 @@ const Article = () => {
 
   return (
     <>
-      <div className="container">
-        <div className="articleCard">
-          <h1>{articleItem.title}</h1>
-          <h3>By {articleItem.author}</h3>
-          <p>{articleItem.body}</p>
-          {articleItem.article_id && (
-            <Upvote article_id={params.article_id} votes={articleItem.votes} />
-          )}
+      {error ? (
+        <p>There has been an error</p>
+      ) : (
+        <>
+          <div className="container">
+            <div className="articleCard">
+              <h1>{articleItem.title}</h1>
+              <h3>By {articleItem.author}</h3>
+              <p>{articleItem.body}</p>
+              {articleItem.article_id && (
+                <Upvote
+                  article_id={params.article_id}
+                  votes={articleItem.votes}
+                />
+              )}
 
-          <p>{articleItem.created_at}</p>
-          <div>
-            <button onClick={toggleComments}>
-              View comments ({articleItem.comment_count})
-            </button>
+              <p>{articleItem.created_at}</p>
+              <div>
+                <button onClick={toggleComments}>
+                  View comments ({articleItem.comment_count})
+                </button>
+              </div>
+            </div>
           </div>
-        </div>
-      </div>
 
-      <AddComment article_id={articleItem.article_id} />
+          <AddComment article_id={articleItem.article_id} />
 
-      <div className="article-comments">
-        {showComments &&
-          articleComments.map((comment) => {
-            return <SingleComment comment={comment} />;
-          })}
-      </div>
+          <div className="article-comments">
+            {showComments &&
+              articleComments.map((comment) => {
+                return <SingleComment comment={comment} />;
+              })}
+          </div>
+        </>
+      )}
     </>
   );
 };
