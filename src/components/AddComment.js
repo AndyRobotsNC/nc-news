@@ -4,8 +4,8 @@ import { loginContext, usernameContext } from "../utils/Context";
 
 const AddComment = ({ article_id }) => {
   const [commentBox, setCommentBox] = useState("");
-  const { username, setUsername } = useContext(usernameContext);
-  const { isLoggedIn, setIsLoggedIn } = useContext(loginContext);
+  const { username } = useContext(usernameContext);
+  const { isLoggedIn } = useContext(loginContext);
 
   const handleSubmit = (event) => {
     event.preventDefault();

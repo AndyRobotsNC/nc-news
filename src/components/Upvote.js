@@ -3,7 +3,7 @@ import { patchUpvotes } from "../utils/api";
 import { loginContext } from "../utils/Context";
 
 const Upvote = ({ article_id, votes }) => {
-  const { isLoggedIn, setIsLoggedIn } = useContext(loginContext);
+  const { isLoggedIn } = useContext(loginContext);
   const [upvotes, setUpvotes] = useState(votes);
 
   const handleUpvotes = () => {

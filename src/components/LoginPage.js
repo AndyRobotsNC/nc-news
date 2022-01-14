@@ -4,7 +4,7 @@ import { loginContext, usernameContext } from "../utils/Context";
 
 const LoginPage = () => {
   const { isLoggedIn, setIsLoggedIn } = useContext(loginContext);
-  const { username, setUsername } = useContext(usernameContext);
+  const { setUsername } = useContext(usernameContext);
   let navigate = useNavigate();
   const [loginBox, setLoginBox] = useState("");
 

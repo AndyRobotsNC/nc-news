@@ -3,7 +3,7 @@ import { useContext } from "react";
 import { usernameContext } from "../utils/Context";
 
 const SingleComment = ({ comment }) => {
-  const { username, setUsername } = useContext(usernameContext);
+  const { username } = useContext(usernameContext);
   let commentID = comment.comment_id;
 
   const handleDelete = () => {
