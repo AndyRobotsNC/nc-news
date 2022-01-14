@@ -7,7 +7,7 @@ const SortBy = ({ setSort_By }) => {
     <div>
       <form>
         <label for="sort_by">Sort by:</label>
-        <select onChange={handleChange} id="list" name="sort_by" id="sort_by">
+        <select onChange={handleChange} name="sort_by" id="sort_by">
           <option disabled selected value="please_select">
             Please select
           </option>
