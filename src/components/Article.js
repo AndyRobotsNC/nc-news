@@ -2,6 +2,7 @@ import { useEffect, useState, useContext } from "react";
 import AddComment from "./AddComment";
 import SingleComment from "./SingleComment";
 import Upvote from "./Upvote";
+import { loginContext } from "../utils/checkLogin";
 import { Link, useParams } from "react-router-dom";
 import {
   singleArticle,
@@ -14,8 +15,6 @@ const Article = () => {
   const [articleComments, setArticleComments] = useState([]);
   const [showComments, setShowComments] = useState(false);
   const { isLoggedIn, setIsLoggedIn } = useContext(loginContext);
-
-  // const [commentText, setCommentText] = useState("View comments");
 
   const params = useParams();
   useEffect(() => {
@@ -47,10 +46,11 @@ const Article = () => {
 
           <p>{articleItem.created_at}</p>
           <div>
-            {}
-            <button onClick={toggleComments}>
-              View comments ({articleItem.comment_count})
-            </button>
+            {isLoggedIn && (
+              <button onClick={toggleComments}>
+                View comments ({articleItem.comment_count})
+              </button>
+            )}
           </div>
         </div>
       </div>

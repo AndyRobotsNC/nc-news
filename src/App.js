@@ -12,6 +12,7 @@ import { useState } from "react";
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+
   return (
     <loginContext.Provider value={{ isLoggedIn, setIsLoggedIn }}>
       <BrowserRouter>
@@ -20,11 +21,12 @@ function App() {
           <Nav />
           <div>
             <Routes>
-              <Route path="/login" element={<LoginPage />} />
               <Route path="/" element={<Home />} />
               <Route path="/articles" element={<Articles />} />
               <Route path="/articles/:article_id" element={<Article />} />
               <Route path="/topics" element={<Topics />} />
+
+              <Route path="/login" element={<LoginPage />} />
             </Routes>
           </div>
         </div>
