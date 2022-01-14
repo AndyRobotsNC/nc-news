@@ -14,7 +14,6 @@ const Article = () => {
   const [articleItem, setArticleItem] = useState({});
   const [articleComments, setArticleComments] = useState([]);
   const [showComments, setShowComments] = useState(false);
-  const { isLoggedIn, setIsLoggedIn } = useContext(loginContext);
 
   const params = useParams();
   useEffect(() => {

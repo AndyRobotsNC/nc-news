@@ -1,14 +1,19 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { postComment } from "../utils/api";
+import { loginContext, usernameContext } from "../utils/Context";
 
 const AddComment = ({ article_id }) => {
   const [commentBox, setCommentBox] = useState("");
+  const { username, setUsername } = useContext(usernameContext);
+  const { isLoggedIn, setIsLoggedIn } = useContext(loginContext);
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    postComment(article_id, commentBox, "jessjelly");
+    if (commentBox.length > 2) {
+      postComment(article_id, commentBox, username);
 
-    setCommentBox("");
+      setCommentBox("");
+    }
   };
   const handleChange = (event) => {
     const { value } = event.target;
@@ -23,7 +28,7 @@ const AddComment = ({ article_id }) => {
         onChange={handleChange}
         value={commentBox}
       />
-      <button>Add Comment</button>
+      <button disabled={!isLoggedIn}>Add Comment</button>
     </form>
   );
 };
