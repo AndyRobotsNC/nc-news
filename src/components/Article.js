@@ -17,15 +17,19 @@ const Article = () => {
 
   const params = useParams();
   useEffect(() => {
-    singleArticle(params.article_id).then((singleItemData) => {
-      setArticleItem(singleItemData);
+    singleArticle(params.article_id)
+      .then((singleItemData) => {
+        setArticleItem(singleItemData);
 
-      if (showComments) {
-        singleArticleComments(params.article_id).then((commentsData) => {
-          setArticleComments(commentsData);
-        });
-      }
-    });
+        if (showComments) {
+          singleArticleComments(params.article_id).then((commentsData) => {
+            setArticleComments(commentsData);
+          });
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }, [params, showComments]);
 
   const toggleComments = () => {

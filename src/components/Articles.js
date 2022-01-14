@@ -6,13 +6,14 @@ import {
   allItemsByCategoryAndSort,
 } from "../utils/api";
 import ArticleCard from "./ArticleCard";
-import { useSearchParams } from "react-router-dom";
+import { useSearchParams, useNavigate } from "react-router-dom";
 import SortBy from "./SortBy";
 
 const Articles = () => {
   const [articles, setArticles] = useState([]);
   const [searchParams, setSearchParams] = useSearchParams();
   const [sort_by, setSort_By] = useState("");
+  const navigate = useNavigate();
 
   const category_name = searchParams.get("topic");
 
@@ -32,9 +33,13 @@ const Articles = () => {
         setArticles(itemsByCategory.data.articles);
       });
     } else {
-      allArticles().then((allData) => {
-        setArticles(allData.data.articles);
-      });
+      allArticles()
+        .then((allData) => {
+          setArticles(allData.data.articles);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
     }
   }, [category_name, sort_by]);
 

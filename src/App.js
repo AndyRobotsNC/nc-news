@@ -1,5 +1,6 @@
 import "./App.css";
 import Header from "./components/Header";
+import ErrorPage from "./components/ErrorPage";
 import Nav from "./components/Nav";
 import Home from "./components/Home";
 import Articles from "./components/Articles";
@@ -23,6 +24,7 @@ function App() {
             <Nav />
             <div>
               <Routes>
+                <Route path="*" element={<ErrorPage />} />
                 <Route path="/" element={<Home />} />
                 <Route path="/articles" element={<Articles />} />
                 <Route path="/articles/:article_id" element={<Article />} />

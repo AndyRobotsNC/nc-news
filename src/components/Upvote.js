@@ -8,7 +8,9 @@ const Upvote = ({ article_id, votes }) => {
 
   const handleUpvotes = () => {
     setUpvotes((currVotes) => currVotes + 1);
-    patchUpvotes(article_id, 1);
+    patchUpvotes(article_id, 1).catch((err) => {
+      setUpvotes((currVotes) => currVotes - 1);
+    });
   };
 
   return (
