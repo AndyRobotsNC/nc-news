@@ -1,13 +1,16 @@
 import { useState, useContext } from "react";
+import { useNavigate } from "react-router-dom";
 import { loginContext } from "../utils/checkLogin";
 
 const LoginPage = () => {
   const { isLoggedIn, setIsLoggedIn } = useContext(loginContext);
 
+  let navigate = useNavigate();
   const [loginBox, setLoginBox] = useState("");
 
   const handleSubmit = (event) => {
     if (loginBox === "jessjelly") {
+      navigate("/");
       setIsLoggedIn((currState) => !currState);
     }
     event.preventDefault();
@@ -16,9 +19,6 @@ const LoginPage = () => {
   const handleChange = (event) => {
     const { value } = event.target;
     setLoginBox(value);
-  };
-  const handleLogout = () => {
-    setIsLoggedIn((currState) => !currState);
   };
 
   return (
@@ -40,7 +40,6 @@ const LoginPage = () => {
       ) : (
         <>
           <h2>You are already logged in!</h2>
-          <button onClick={handleLogout}>Logout</button>
         </>
       )}
     </div>
