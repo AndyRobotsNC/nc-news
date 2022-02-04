@@ -26,7 +26,7 @@ const LoginPage = () => {
     <div>
       {!isLoggedIn ? (
         <>
-          <h2>Enter your login details below</h2>
+          <h2 className="loginText">Enter your login details below</h2>
           <form onSubmit={handleSubmit}>
             <label>username: </label>
             <input

@@ -78,3 +78,6 @@ form {
 .addCommentBox {
   width: 300px;
 }
+.loginText {
+  text-align: center;
+}
